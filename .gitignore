@@ -1,0 +1,26 @@
+# Ignore C++ build artifacts.
+
+*.o
+*.so
+*.exe
+*.dll
+
+
+# Ignore Vagrant runtime files.
+
+.vagrant/
+
+
+# Ignore settings for various IDEs.
+
+.idea/
+.project/
+.vscode/
+nbproject/
+*.code-workspace
+
+
+# Ignore OS metadata files.
+
+.DS_Store
+Thumbs.db
