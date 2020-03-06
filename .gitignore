@@ -4,7 +4,7 @@
 *.so
 *.exe
 *.dll
-
+*.egg-info
 
 # Ignore Vagrant runtime files.
 
@@ -18,8 +18,10 @@
 .vscode/
 nbproject/
 *.code-workspace
-
-
+cmake-build-debug
+build
+tests/bin
+dist
 # Ignore OS metadata files.
 
 .DS_Store

@@ -1,11 +1,11 @@
-/// Application entry point.
-///
-extern int cli(int, char* []);  // cli.cpp
+//
+// Created by Andrew Bailey on 3/5/20.
+//
+
+#include <banded_alignment/BandedAlignment.hpp>
 
 
-/// Execute the desired application interface.
-///
-int main(int argc, char* argv[]) 
-{
-    return cli(argc, argv); 
+int main(int argc, char *argv[]) {
+  string cigar = banded_alignment("ATGC", "ATGC");
+  return 0;
 }
