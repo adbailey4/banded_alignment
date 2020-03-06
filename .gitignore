@@ -23,3 +23,4 @@ Thumbs.db
 #Ignore other stuff
 tests/bin
 dist
+.pytest_cache
