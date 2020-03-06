@@ -6,11 +6,6 @@
 *.dll
 *.egg-info
 
-# Ignore Vagrant runtime files.
-
-.vagrant/
-
-
 # Ignore settings for various IDEs.
 
 .idea/
@@ -20,9 +15,11 @@ nbproject/
 *.code-workspace
 cmake-build-debug
 build
-tests/bin
-dist
 # Ignore OS metadata files.
 
 .DS_Store
 Thumbs.db
+
+#Ignore other stuff
+tests/bin
+dist
