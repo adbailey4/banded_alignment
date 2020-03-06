@@ -28,49 +28,8 @@ target_include_directories(ba
 add_executable(bandedAlignment src/main.cpp)
 target_link_libraries(bandedAlignment PRIVATE ba)
 # Pybind LIBRARY
-message(Python_ROOT_DIR: "${Python_ROOT_DIR}")
-message(PYTHON_EXECUTABLE: "${PYTHON_EXECUTABLE}")
-message(PYTHON_LIBRARY: "${PYTHON_LIBRARY}")
-
-#message("$ENV{PATH}")
-find_program(PYTHON_EXECUTABLE NAMES python NO_PACKAGE_ROOT_PATH NO_CMAKE_PATH HINTS $ENV{PATH})
-message("${PYTHON_EXECUTABLE}")
-#message("${Python3_FIND_VIRTUALENV}")
-set(Python3_FIND_VIRTUALENV "FIRST")
-#set(Python_ROOT_DIR "/Users/andrewbailey/anaconda3/envs/ba/")
-#set(PYTHON_EXECUTABLE "/Users/andrewbailey/anaconda3/envs/ba/python3.7")
-#set(PYTHON_LIBRARY "/Users/andrewbailey/anaconda3/envs/ba/lib/libpython3.7m.dylib")
-#message(PYTHON_EXECUTABLE: "${PYTHON_EXECUTABLE}")
-#message(PYTHON_LIBRARY: "${PYTHON_LIBRARY}")
-#message(Python_ROOT_DIR: "${Python_ROOT_DIR}")
-#set(Python3_DIR  "${Python_ROOT_DIR}")
-#message(Python3_DIR: "${Python3_DIR}")
-#find_package(Python3 COMPONENTS Interpreter Development)
-#find_package(Python3 3.7 COMPONENTS Interpreter Development NO_PACKAGE_ROOT_PATH NO_CMAKE_PATH HINTS ${Python3_ROOT_DIR})
-#find_package (Python3 COMPONENTS Interpreter Development NO_PACKAGE_ROOT_PATH NO_CMAKE_PATH  HINTS $ENV{PATH} )
-message(PYTHON_EXECUTABLE: "${PYTHON_EXECUTABLE}")
-message(PYBIND11_PYTHON_VERSION: "${PYBIND11_PYTHON_VERSION}")
-set(Python_ADDITIONAL_VERSIONS 3.7 3.6 3.5 3.4)
-if(PYTHONLIBS_FOUND AND PYTHON_MODULE_EXTENSION)
-    return()
-endif()
-find_library(PYTHON_LIBRARY
-        NAMES "python${PYTHON_LIBRARY_SUFFIX}"
-        PATHS ${_PYTHON_LIBS_SEARCH}
-        NO_DEFAULT_PATH)
-
-# Use the Python interpreter to find the libs.
-message(PythonLibsNew_FIND_REQUIRED "${PythonLibsNew_FIND_REQUIRED}")
-message(PythonLibsNew_FIND_VERSION "${PythonLibsNew_FIND_VERSION}")
-
-if(PythonLibsNew_FIND_REQUIRED)
-    find_package(PythonInterp ${PythonLibsNew_FIND_VERSION} REQUIRED)
-else()
-    find_package(PythonInterp ${PythonLibsNew_FIND_VERSION})
-endif()
+find_program(PYTHON_EXECUTABLE NAMES python HINTS $ENV{PATH})
 include(cmake/addPybind.cmake RESULT_VARIABLE pybind)
-message(PYTHON_EXECUTABLE: "${PYTHON_EXECUTABLE}")
-message(PYTHON_LIBRARY: "${PYTHON_LIBRARY}")
 # add pybind
 pybind11_add_module(bindings src/PythonBindings.cpp)
 target_link_libraries(bindings PRIVATE ba)
