@@ -1,16 +1,24 @@
-language: cpp
-
-sudo: required
-
-compiler:
-    - gcc
-    - clang
-
-install:
-    # CMake 3.2+
-    - wget http://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.sh
-    - sudo /bin/sh cmake-3.2.3-Linux-x86_64.sh --prefix=/usr/local --skip-license
-
+language: generic
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+      python: 3.6
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - cmake-data
+            - gcc-6
+            - g++-6
+            - cmake
+      env:
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 script:
-    - make test
-    - make doc
+- python setup.py install
+- cd tests && pytest
+
+notifications:
+  slack:
+    secure: C/6ugA2morp7mr2XPSMAgIA9Wkizs8krer3hfzcC6P4deA5m+UKHRDGFtrYq7bwRb2JMiwFvuPDhIOIZpCf+qT5nI3g8Zm0XdhhzSnG7cIfY+Ov6A8gRm3NbGovkpcOXUvnfJo5zp4FS9fkvyW0DDsyGkuqrpLu/fSRhvUcWf/trzQ+x1whtzqUR95EtWAu/46+aixWm4jyhlHfg0aWAuK7H0Rk0e43RwAVtKQ43/nanLKlH5mVCc/NPpJ0GAgbfhv2OREPNgiBVnh1GWyKCiVmH7q2v997S4KVZPC8wEQ2/49ZGS3ym4zXquMpYEyXK9GXxvEo+AnAGSQYCiQv/zM/wLC2ihXpCs/fH3Hf+fGdYtZDKcpVDrE8xyDGxKPCODkdV5oVxxvrkkvxstZAQkgASrw6wlYD+5+xn+rr2/f0TuKHDmbXtQa5vaZFIQuurpyt6yFii193zO6ySIZHZiQAOFOflNvvtZ6dV0vBZ+Y3Bss9nYhbs2+vxAyVqwAFwWtkaGp+cJTpFCfbCcOpMMxBbExUAdOdu+Z3UHiqc9pREUxXUZOKPJCtPUne+MAanzsE3IBt1oL1xiYAtVENj/a5A+p85MiHvOvzQjU4sICvYAiCZWsThBobHxvZgCDxRwZ+2+Jy4wYYKrclGl47kLCSwYRUoE81DzvQqTgcAa2k=
