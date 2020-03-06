@@ -13,7 +13,6 @@ extern "C" {
 #include <cstring>
 #include <iostream>
 #include <unordered_map>
-#include <cinttypes>
 
 using namespace std;
 
@@ -44,8 +43,6 @@ char const* string_to_encoding(string& sequence){
 
 string banded_alignment(string ref, string query){
   /* create config */
-//  init.score_matrix = GABA_SCORE_MATRIX(2, 3);
-//  GABA_SCORE_SIMPLE(_m, _x, _gi, _ge)	.score_matrix = { (_m),-(_x),-(_x),-(_x),-(_x),(_m),-(_x),-(_x),-(_x),-(_x),(_m),-(_x),-(_x),-(_x),-(_x),(_m) }, .gi = (_gi), .ge = (_ge)
   signed char _m = 2;
   signed char _x = 3;
   struct gaba_params_s data =
@@ -70,15 +67,17 @@ string banded_alignment(string ref, string query){
           .gfa = 0,
           .gfb = 0,
           .xdrop = 100};
-//  gaba_t *ctx = gaba_init(GABA_PARAMS(GABA_SCORE_SIMPLE(2, 3, 5, 1), .xdrop = 100));
   gaba_t *ctx = gaba_init(&data);
 
 //  char const *a = "\x01\x08\x01\x08\x01\x04\x02\x01\x08\x08\x08\x08";			/* 4-bit encoded "ATATAGCATTTT" */
 //  char const *b = "\x01\x08\x04\x02\x01\x08\x08\x08\x08";			/* 4-bit encoded "ATGCATTTT" */
+//  char const *a = "CATGTCCTGCATGGCATTAGTACGTGGCTTGCCTGGCG";
+//  char const *b = "CATGTCAGATTGAACGTGTTGAACGTTGCCTGGCG";
 
   char const *a = string_to_encoding(ref);
   char const *b = string_to_encoding(query);
-
+//  char const *a = "\x02\x01\x08\x04\x08\x02\x02\x08\x04\x02\x01\x08\x04\x04\x02\x01\x08\x08\x01\x04\x08\x01\x02\x04\x08\x04\x04\x02\x08\x08\x04\x02\x02\x08\x04\x04\x02\x04";
+//  char const *b = "\x01\x04\x01\x08\x08\x04\x01\x01\x02\x04\x08\x04\x08\x08\x04\x01\x01\x02\x04\x08\x08\x04\x02\x02\x08\x04\x04\x02\x04";
   char const t[64] = { 0 };							/* tail array */
 
   uint32_t a_len = strlen(a);

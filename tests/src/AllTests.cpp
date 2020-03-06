@@ -34,10 +34,8 @@ TEST (BandedAlignmentTests, test_string_to_encoding) {
 TEST (BandedAlignmentTests, test_banded_alignment){
   string matches = banded_alignment("ATATAGCATTTT", "ATGCATTTT");
   EXPECT_EQ(matches, "2M3D7M");
-//  string some_seq = "CATGTCCTGCATGGCATTAGTACGTGGCTTGCCTGGCG";
-//  string some_other_seq = "AGATTGAACGTGTTGAACGTTGCCTGGCG";
-  string matches2 = banded_alignment("CATGTCCTGCATGGCATTAGTACGTGGCTTGCCTGGCG", "AGATTGAACGTGTTGAACGTTGCCTGGCG");
-  EXPECT_EQ(matches2, "7M1I6M2I4M1I12M");
+  string matches2 = banded_alignment("CATGTCCTGCAATGGCACTTAAGTACGTGCGCTTGCCATGGCG", "CATGTCCTGCATGGCATTAGTACGTGGCTTGCCTGGCG");
+  EXPECT_EQ(matches2, "11M1D5M1D3M1D7M1D7M1D5M");
 }
 
 

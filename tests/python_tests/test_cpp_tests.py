@@ -18,11 +18,11 @@ class CppTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         super(CppTests, cls).setUpClass()
-        cls.HOME = '/'.join(os.path.abspath(__file__).split("/")[:-2])
+        cls.HOME = '/'.join(os.path.abspath(__file__).split("/")[:-3])
 
     def test_cpp(self):
         print("\n\nTesting C++ code...")
-        test_path = os.path.join(self.HOME, 'tests/bin', 'test_embed')
+        test_path = os.path.join(self.HOME, 'tests/bin', 'CppTests')
         print()
         subprocess.check_call([test_path, self.HOME])
         print()
