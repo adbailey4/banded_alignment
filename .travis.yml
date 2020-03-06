@@ -20,16 +20,8 @@ matrix:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
 before_install:
-  - version=3.15.3
-  - build=3
-  - mkdir ~/temp
-  - cd ~/temp
-  - wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
-  - https://github.com/Kitware/CMake/releases/download/v3.17.0-rc2/cmake-3.17.0-rc2.tar.gz
-  - tar -xzvf cmake-$version.$build.tar.gz
-  - ./bootstrap
-  - make -j4
-  - sudo make install
+  - wget -O cmake.sh https://cmake.org/files/v3.15/cmake-3.15.3-Linux-x86_64.sh
+  - sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr/local
 
 install:
   - cmake --version
