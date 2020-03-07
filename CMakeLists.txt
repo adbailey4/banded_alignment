@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_VERBOSE_MAKEFILE ON)
 # Set the project name
 project (banded_alignment)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 # check if trying to build within project
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")

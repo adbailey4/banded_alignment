@@ -5,7 +5,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(LIBGABA_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libgaba/libgaba.a)
 set(LIBGABA_HEADER_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/libgaba)
 
-set(ENV{CFLAGS} -fPIC -O3 -Wall -Wno-unused-function -Wno-unused-label -std=c99 -pipe -DBIT=4)
+set(ENV{CFLAGS} "-fPIC -O3 -Wall -Wno-unused-function -Wno-unused-label -std=c99 -pipe -DBIT=4")
 
 add_custom_command(
         OUTPUT ${LIBGABA_LIBRARY}
