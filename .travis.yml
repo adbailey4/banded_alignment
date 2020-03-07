@@ -20,9 +20,9 @@ matrix:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
 before_install:
+  - sudo apt-get remove cmake
   - wget -O cmake.sh https://cmake.org/files/v3.15/cmake-3.15.3-Linux-x86_64.sh
-  - sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr/local
-  - alias cmake="/usr/local/bin/cmake"
+  - sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr
   - cmake --version
   - /usr/local/bin/cmake --version
 
