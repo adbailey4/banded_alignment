@@ -25,6 +25,10 @@ before_install:
   - sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr
   - cmake --version
   - /usr/local/bin/cmake --version
+  - shopt -s expand_aliases
+  - alias cmake="/usr/bin/cmake"
+  - cmake --version
+  - /usr/local/bin/cmake --version
 
 install:
   - cmake --version
