@@ -29,7 +29,7 @@ add_executable(bandedAlignment src/main.cpp)
 target_link_libraries(bandedAlignment PRIVATE ba)
 # Pybind LIBRARY
 find_program(PYTHON_EXECUTABLE NAMES python HINTS $ENV{PATH})
-include(cmake/addPybind.cmake RESULT_VARIABLE pybind)
+include(cmake/AddPybind.cmake RESULT_VARIABLE pybind)
 # add pybind
 pybind11_add_module(bindings src/PythonBindings.cpp)
 target_link_libraries(bindings PRIVATE ba)
