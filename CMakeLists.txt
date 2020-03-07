@@ -20,6 +20,7 @@ endif()
 add_subdirectory(extern)
 # create library
 add_library(ba STATIC src/BandedAlignment.cpp)
+set_property(TARGET ba PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(ba libgaba)
 target_include_directories(ba
         PUBLIC
