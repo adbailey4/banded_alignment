@@ -37,7 +37,8 @@ install:
   - python --version
   - pwd
   - ls
-  - python setup.py install
+  - mkdir build && cd build && cmake .. && make
+  - cd .. && python setup.py install
 
 script:
   - cd tests && pytest

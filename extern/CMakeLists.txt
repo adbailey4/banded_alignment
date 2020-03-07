@@ -1,7 +1,9 @@
 ## Build test suite.
 project(libgaba)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 set(LIBGABA_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libgaba/libgaba.a)
-SET(LIBGABA_HEADER_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/libgaba)
+set(LIBGABA_HEADER_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/libgaba)
 
 set(CFLAGS -fPIC -O3 -Wall -Wno-unused-function -Wno-unused-label -std=c99 -pipe -DBIT=4)
 
