@@ -37,7 +37,8 @@ install:
   - python --version
   - pwd
   - ls
-  - pip3 install Cython>=0.29.12
+  - pip install Cython>=0.29.12
+  - pip install py3helpers[seq_tools]
   - python setup.py install
 
 script:
