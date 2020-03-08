@@ -130,7 +130,7 @@ def main():
         ext_modules=[CMakeExtension('banded_alignment.bindings')],
         cmdclass=dict(build_ext=CMakeBuild, install=PostInstallCommand),
         author_email='bailey.andrew4@gmail.com',
-        install_requires=['py3helpers[seq_tools]>=0.4.0'],
+        install_requires=['py3helpers[seq_tools]>=0.4.1'],
         zip_safe=False
     )
 
