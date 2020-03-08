@@ -37,7 +37,6 @@ install:
   - python --version
   - pwd
   - ls
-  - pip show cython
   - pip install py3helpers[seq_tools]
   - python setup.py install
 
