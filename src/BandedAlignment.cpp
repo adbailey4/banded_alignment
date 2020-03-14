@@ -36,6 +36,7 @@ char const* string_to_encoding(string& sequence){
   for (std::string::size_type i = 0; i < sequence.size(); i++) {
     outStr[i] = char_to_encoding(sequence[i]);
   }
+  outStr[sequence.size()]='\0';
   return outStr;
 }
 
