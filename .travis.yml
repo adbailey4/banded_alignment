@@ -38,7 +38,7 @@ install:
   - pwd
   - ls
   - pip install py3helpers[seq_tools]
-  - python setup.py install
+  - pip install -e .
 
 script:
   - cd tests && pytest

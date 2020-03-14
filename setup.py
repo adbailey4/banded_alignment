@@ -100,13 +100,15 @@ class CMakeBuild(build_ext):
 class PostInstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
-        install.do_egg_install(self)
+        install.run(self)
         build_temp = self.build_lib.replace("lib", "temp")
         for executable in MAIN_EXECUTABLES:
             source = os.path.join(os.path.dirname(os.path.abspath(__file__)), build_temp, executable)
+            print(source)
             target = os.path.join(self.install_scripts, executable)
             if os.path.isfile(target):
                 os.remove(target)
+            print(target)
             self.copy_file(source, target)
 
 
