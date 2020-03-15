@@ -97,17 +97,19 @@ class CMakeBuild(build_ext):
         print()  # Add empty line for nicer output
 
 
-class PostInstallCommand(install):
-    """Post-installation for installation mode."""
-    def run(self):
-        install.do_egg_install(self)
-        build_temp = self.build_lib.replace("lib", "temp")
-        for executable in MAIN_EXECUTABLES:
-            source = os.path.join(os.path.dirname(os.path.abspath(__file__)), build_temp, executable)
-            target = os.path.join(self.install_scripts, executable)
-            if os.path.isfile(target):
-                os.remove(target)
-            self.copy_file(source, target)
+# class PostInstallCommand(install):
+#     """Post-installation for installation mode."""
+#     def run(self):
+#         install.run(self)
+#         build_temp = self.build_lib.replace("lib", "temp")
+#         for executable in MAIN_EXECUTABLES:
+#             source = os.path.join(os.path.dirname(os.path.abspath(__file__)), build_temp, executable)
+#             print(source)
+#             target = os.path.join(self.install_scripts, executable)
+#             if os.path.isfile(target):
+#                 os.remove(target)
+#             print(target)
+#             self.copy_file(source, target)
 
 
 TEST_EXECUTABLES = ["tests/CppTests"]
@@ -128,9 +130,9 @@ def main():
         packages=find_packages('src'),
         package_dir={'': 'src'},
         ext_modules=[CMakeExtension('banded_alignment.bindings')],
-        cmdclass=dict(build_ext=CMakeBuild, install=PostInstallCommand),
+        cmdclass=dict(build_ext=CMakeBuild),  # , install=PostInstallCommand),
         author_email='bailey.andrew4@gmail.com',
-        install_requires=['py3helpers[seq_tools]>=0.4.0'],
+        install_requires=['py3helpers[seq_tools]>=0.4.1'],
         zip_safe=False
     )
 

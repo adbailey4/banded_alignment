@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Set the project name
 project (banded_alignment)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 # check if trying to build within project
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")
@@ -20,6 +21,7 @@ endif()
 add_subdirectory(extern)
 # create library
 add_library(ba STATIC src/BandedAlignment.cpp)
+set_property(TARGET ba PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(ba libgaba)
 target_include_directories(ba
         PUBLIC
@@ -29,7 +31,7 @@ add_executable(bandedAlignment src/main.cpp)
 target_link_libraries(bandedAlignment PRIVATE ba)
 # Pybind LIBRARY
 find_program(PYTHON_EXECUTABLE NAMES python HINTS $ENV{PATH})
-include(cmake/addPybind.cmake RESULT_VARIABLE pybind)
+include(cmake/AddPybind.cmake RESULT_VARIABLE pybind)
 # add pybind
 pybind11_add_module(bindings src/PythonBindings.cpp)
 target_link_libraries(bindings PRIVATE ba)
