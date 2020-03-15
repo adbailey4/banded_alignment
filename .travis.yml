@@ -37,7 +37,7 @@ install:
   - python --version
   - pwd
   - ls
-  - pip install py3helpers[seq_tools]
+#  - pip install py3helpers[seq_tools]
   - pip install -e .
 
 script:
